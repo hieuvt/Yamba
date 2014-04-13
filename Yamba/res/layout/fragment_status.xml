@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hieuvt.yamba.StatusActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <Button
+        android:id="@+id/buttonTweet"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/button_tweet" />
+
+    <EditText
+        android:id="@+id/editStatus"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/buttonTweet"
+        android:ems="10"
+        android:hint="@string/hint_status"
+        android:inputType="textMultiLine">
+
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editStatus"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="23dp"
+        android:text="@string/maxNumChar"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>
+

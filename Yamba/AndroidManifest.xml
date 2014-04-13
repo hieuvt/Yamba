@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hieuvt.yamba"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.hieuvt.yamba.StatusActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.hieuvt.yamba.action.tweet" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hieuvt.yamba.SettingsActivity"
+            android:label="@string/action_settings" >
+        </activity>
+        <activity
+            android:name="com.hieuvt.yamba.MainActivity"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.hieuvt.yamba.DetailsActivity" >
+        </activity>
+
+        <service android:name="com.hieuvt.yamba.RefreshService" >
+        </service>
+
+        <provider
+            android:name="com.hieuvt.yamba.StatusProvider"
+            android:authorities="com.hieuvt.yamba.StatusProvider"
+            android:exported="false" />
+
+        <receiver android:name="com.hieuvt.yamba.BootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.hieuvt.yamba.NotificationReceiver" >
+            <intent-filter>
+                <action android:name="com.hieuvt.yamba.action.NEW_STATUSES" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.hieuvt.yamba.YambaWidget"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.hieuvt.yamba.action.NEW_STATUSES" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/yamba_widget" />
+        </receiver>
+
+        <service
+            android:name=".YambaWallpaper"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_WALLPAPER" >
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/wallpaper" />
+        </service>
+    </application>
+
+</manifest>
